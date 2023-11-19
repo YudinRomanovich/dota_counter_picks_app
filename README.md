@@ -11,11 +11,11 @@
    ```
 3. Клонируйте репозиторий с помощью Git:
    ```
-   git clone https://github.com/YudinRomanovich/dota-counter-pick.git
+   git clone https://github.com/YudinRomanovich/dota_counter_picks_app.git
    ```
 4. Перейдите в каталог с программой:
    ```
-   cd dota-counter-pick
+   cd dota-counter-picks_app
    ```
 5. Запустите программу:
    ```
