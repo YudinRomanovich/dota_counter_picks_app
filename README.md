@@ -11,7 +11,7 @@
    ```
 3. Клонируйте репозиторий с помощью Git:
    ```
-   git clone https://github.com/ваш_юзернейм/dota-counter-pick.git
+   git clone https://github.com/YudinRomanovich/dota-counter-pick.git
    ```
 4. Перейдите в каталог с программой:
    ```
