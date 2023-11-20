@@ -17,10 +17,9 @@ import requests
 
 from bs4 import BeautifulSoup
 
-url = 'https://www.dotabuff.com/heroes'
-
-list_of_hero_url = []
 list_of_enemy_pick = []
+
+url = 'https://www.dotabuff.com/heroes'
 
 headers = {
 		'Accept': '*/*',
@@ -32,7 +31,8 @@ def handeled_heroes(list_of_counter_picks):
 		print(item, list_of_counter_picks.count(item))
 
 def get_list_of_url_enemy_pick():
-	for _ in range(5):
+
+	for _ in range(3):
 		enemy_pick =url + r'/' + input("Get the list of enemy pick: ").lower() + r'/counters'
 		list_of_enemy_pick.append(enemy_pick)
 	return list_of_enemy_pick
