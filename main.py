@@ -26,11 +26,6 @@ headers = {
 		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
 	}
 
-def handeled_heroes(list_of_counter_picks):
-    for item in list_of_counter_picks:
-        print(item, list_of_counter_picks.count(item))
-
-
 def get_list_of_url_enemy_pick(list_of_enemy_picks):
     list_of_enemy_pick_urls = []
     for enemy_pick in list_of_enemy_picks:
@@ -64,10 +59,6 @@ def main():
 	get_list_of_url_enemy_pick()
 	
 	list_of_counter_picks = get_all_counter_enemy_hero(list_of_enemy_pick)
-	
-	handeled_heroes(list_of_counter_picks)
 
 if __name__ == '__main__':
 	main()
-
-
