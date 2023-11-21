@@ -27,35 +27,37 @@ headers = {
 	}
 
 def handeled_heroes(list_of_counter_picks):
-	for item in list_of_counter_picks:
-		print(item, list_of_counter_picks.count(item))
+    for item in list_of_counter_picks:
+        print(item, list_of_counter_picks.count(item))
 
-def get_list_of_url_enemy_pick():
 
-	for _ in range(3):
-		enemy_pick =url + r'/' + input("Get the list of enemy pick: ").lower() + r'/counters'
-		list_of_enemy_pick.append(enemy_pick)
-	return list_of_enemy_pick
+def get_list_of_url_enemy_pick(list_of_enemy_picks):
+    list_of_enemy_pick_urls = []
+    for enemy_pick in list_of_enemy_picks:
+        for _ in range(3):
+            enemy_pick_url = url + r'/' + enemy_pick.lower() + r'/counters'
+            list_of_enemy_pick_urls.append(enemy_pick_url)
+    return list_of_enemy_pick_urls
 
 
 def get_all_counter_enemy_hero(list_of_enemy_pick):
-	list_of_counters = []  # Moved list_of_counters declaration inside the function
-	for hero_url in list_of_enemy_pick:
-		response = requests.get(hero_url, headers=headers)
-		soup = BeautifulSoup(response.text, 'html.parser')
-		counters = soup.find(class_='counter-outline')
+    list_of_counters = []
+    for hero_url in list_of_enemy_pick:
+        response = requests.get(hero_url, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        counters = soup.find(class_='counter-outline')
 
-		if counters is not None:
-			list_heroes = counters.find_all("tr")
-			for item in list_heroes:
-				count = item.find('td')
-				if count is not None:
-					name = count.find('img').get('alt')
-					list_of_counters.append(name)  # Append to the global list_of_counters		
-		else:
-			print(f"The class 'counter-outline' was not found in the HTML for URL {hero_url}")
+        if counters is not None:
+            list_heroes = counters.find_all("tr")
+            for item in list_heroes:
+                count = item.find('td')
+                if count is not None:
+                    name = count.find('img').get('alt')
+                    list_of_counters.append(name)
+        else:
+            print(f"The class 'counter-outline' was not found in the HTML for URL {hero_url}")
 
-	return list_of_counters
+    return list_of_counters
 
 
 def main():
