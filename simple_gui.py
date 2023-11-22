@@ -1,8 +1,8 @@
-import tkinter as tk
-import main
 
-from tkinter import ttk
+# Импортируем модуль tkinter
+import tkinter as tk
 from collections import Counter
+import main
 
 # Функция для добавления героя в список выбранных героев
 def update_listbox(event):
@@ -13,10 +13,9 @@ def update_listbox(event):
     # Очищаем поле ввода
     name_of_enemy_pick_hero.delete(0, tk.END)
 
-
 # Функция для обработки выбранных героев и отображения контр-героев
 def process_enemy_picks():
-	# Получаем лист героев
+    # Получаем лист героев
     list_of_enemy_picks = list(lbox.get(0, tk.END))
     # Передаем их в функцию и получаем 
     list_of_enemy_pick_urls = main.get_list_of_url_enemy_pick(list_of_enemy_picks)
@@ -30,40 +29,43 @@ def process_enemy_picks():
         else:
             lbox2.insert(tk.END, item)
 
-
 # Создаем главное окно приложения
 win = tk.Tk()
+
 # Устанавливаем размеры окна
 win.geometry('500x400')
-# Убираем изменение ширины высоты окна
+
+# Убираем изменение ширины высоты окна  
 win.resizable(False, False)
+
 # Устанавливаем заголовок окна
 win.title('Dota counter picks')
+
 # Устанавливаем иконку окна
 win.iconphoto(False, tk.PhotoImage(file='dota2.png'))
 
 # Создаем стиль оформления окна
-win.configure(bg='white')
+win.configure(bg='black')
 
 # List виджет для отображения выбранных героев
-lbox = tk.Listbox(win, bg="white", fg="black", font=("Helvetica", 14, "bold"))
+lbox = tk.Listbox(win, bg="black", fg="white", font=("Helvetica", 14, "bold"))
 lbox.grid(row=0, column=0, padx=15, pady=50, stick='s')
 
-tk.Label(win, text="Counter Picks").grid(row=0, column=1, stick='n')
-tk.Label(win, text="Enter hero name").grid(row=0, column=0, stick='n')
+tk.Label(win, text="Counter Picks", font=("Helvetica", 16), bg="black", fg="red").grid(row=0, column=1, stick='n')
+tk.Label(win, text="Enter hero name", font=("Helvetica", 16), bg="black", fg="red").grid(row=0, column=0, stick='n')
 
 # Entry виджет для ввода названия героя
-name_of_enemy_pick_hero = tk.Entry(win, bg="white", fg="black", font=("Helvetica", 14))
+name_of_enemy_pick_hero = tk.Entry(win, bg="black", fg="white", font=("Helvetica", 14))
 name_of_enemy_pick_hero.grid(row=0, column=0, padx=15, pady=25, stick='n')
 # Привязываем обработчик событий к полю ввода для добавления героя в список выбранных героев при нажатии Enter
 name_of_enemy_pick_hero.bind('<Return>', update_listbox)
 
 # Button виджет для обработки выбранных героев и отображения контр-героев
-process_button = tk.Button(win, text="Process Enemy Picks", command=process_enemy_picks, bg="black", fg="white", font=("Helvetica", 14))
+process_button = tk.Button(win, text="Process Enemy Picks", command=process_enemy_picks, bg="red", fg="white", font=("Helvetica", 14))
 process_button.grid(row=1, column=0, padx=15, stick='s')
 
 # List виджет для отображения контр-героев
-lbox2 = tk.Listbox(win, bg="white", fg="black", font=("Helvetica", 14))
+lbox2 = tk.Listbox(win, bg="black", fg="white", font=("Helvetica", 14))
 lbox2.grid(row=0, column=1, padx=15, pady=15, stick='we')
 
 # Запускаем главный цикл приложения
